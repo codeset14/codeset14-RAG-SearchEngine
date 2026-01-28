@@ -1,13 +1,9 @@
 from huggingface_hub import InferenceClient
 
-
 class RAGGenerator:
-    from huggingface_hub import InferenceClient
-
-class Generator:
     def __init__(self, model_name="mistralai/Mistral-7B-Instruct-v0.2"):
         self.client = InferenceClient(model=model_name)
-        self.model = model_name
+        self.model_name = model_name
 
     def generate(self, query, chunks):
         context = "\n\n".join([c.text for c in chunks])
@@ -33,8 +29,8 @@ Final concise answer:
 
         response = self.client.text_generation(
             prompt,
-            max_new_tokens=512
+            max_new_tokens=512,
+            temperature=0.2
         )
 
         return response
-
