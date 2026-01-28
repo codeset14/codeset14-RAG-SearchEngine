@@ -6,15 +6,7 @@ from sentence_transformers import SentenceTransformer
 from typing import List
 
 import os
-from huggingface_hub import login
 
-
-# Authenticate to Hugging Face BEFORE loading any model
-hf_token = os.environ.get("HF_TOKEN")
-if hf_token:
-    login(token=hf_token)
-else:
-    print("HF_TOKEN not found in environment")
 
 
 from sentence_transformers import SentenceTransformer
