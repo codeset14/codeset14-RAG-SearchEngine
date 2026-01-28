@@ -12,8 +12,9 @@ from huggingface_hub import login
 
 hf_token = os.getenv("HF_TOKEN")
 if hf_token:
-login(token=hf_token)
-
+    login(token=hf_token)
+else:
+    print("HF_TOKEN not found in environment")
 
 def build_index(data_path="data", index_path="vector_store"):
     print("📂 Loading documents...")
