@@ -1,0 +1,31 @@
+# UI
+streamlit
+
+# LLM API
+ollama
+
+# Embeddings & Reranking
+sentence-transformers
+torch
+
+# Vector Database
+faiss-cpu
+
+# Document Processing
+pymupdf
+pypdf
+python-docx
+pytesseract
+pillow
+unstructured
+
+# RAG Utilities
+langchain
+langchain-community
+langchain-text-splitters
+
+# Core
+numpy
+scipy
+tqdm
+python-dotenv
