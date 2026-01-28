@@ -18,7 +18,7 @@ def load_backend():
     reranker = Reranker()
 
     # Cloud LLM (HuggingFace Inference)
-    generator = RAGGenerator(model_name="mistralai/Mistral-7B-Instruct-v0.2")
+    generator = RAGGenerator()
     # or: model_name="microsoft/Phi-3-mini-4k-instruct"
 
     return retriever, reranker, generator
