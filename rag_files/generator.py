@@ -1,10 +1,11 @@
-
 from huggingface_hub import InferenceClient
+
 
 class RAGGenerator:
     def __init__(self, model_name="phi3:mini"):
-        from ollama import Client
-        self.client = InferenceClient(model="mistralai/Mistral-7B-Instruct-v0.2")
+        self.client = InferenceClient(
+            model="mistralai/Mistral-7B-Instruct-v0.2"
+        )
         self.model = model_name
 
     def generate(self, query, chunks):
@@ -26,9 +27,13 @@ Context:
 Question:
 {query}
 
-Step-by-step reasoning, then final concise answer:
+Final concise answer:
 """
 
-        response =response = self.client.text_generation(prompt, max_new_tokens=512)
+        response = self.client.text_generation(
+            prompt,
+            max_new_tokens=512
+        )
 
-        return response["response"]
+        return response
+
