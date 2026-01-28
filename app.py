@@ -6,14 +6,22 @@ from rag_files.retriever import Retriever
 from rag_files.reranker import Reranker
 from rag_files.generator import RAGGenerator
 
-st.set_page_config(page_title="Local RAG Chatbot", layout="wide")
-st.title("📚 Local RAG Chatbot")
+st.set_page_config(page_title="RAG Search Engine", layout="wide")
+st.title("📚 RAG Search Engine")
 
 @st.cache_resource
 def load_backend():
     indexer = EmbeddingIndexer(index_path="vector_store")
     indexer.load()
-    return Retriever(indexer), Reranker(), RAGGenerator("phi3:mini")
+
+    retriever = Retriever(indexer)
+    reranker = Reranker()
+
+    # Cloud LLM (HuggingFace Inference)
+    generator = RAGGenerator(model_name="mistralai/Mistral-7B-Instruct-v0.2")
+    # or: model_name="microsoft/Phi-3-mini-4k-instruct"
+
+    return retriever, reranker, generator
 
 retriever, reranker, generator = load_backend()
 
