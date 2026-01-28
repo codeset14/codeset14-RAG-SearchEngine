@@ -5,7 +5,7 @@ streamlit
 ollama
 
 # Embeddings & Reranking
-sentence-transformers
+sentence-transformers 
 torch
 
 # Vector Database
@@ -19,7 +19,7 @@ pytesseract
 pillow
 unstructured
 
-# RAG Utilities
+# RAG Utilities 
 langchain
 langchain-community
 langchain-text-splitters
@@ -29,3 +29,4 @@ numpy
 scipy
 tqdm
 python-dotenv
+huggingface-hub
