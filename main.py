@@ -7,10 +7,7 @@ from rag_files.generator import RAGGenerator
 
 
 
-from huggingface_hub import login
 
-
-login(token=os.environ.get("HF_TOKEN"))
 
 def build_index(data_path="data", index_path="vector_store"):
     print("📂 Loading documents...")
