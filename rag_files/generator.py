@@ -2,10 +2,11 @@ from huggingface_hub import InferenceClient
 
 
 class RAGGenerator:
-    def __init__(self, model_name="phi3:mini"):
-        self.client = InferenceClient(
-            model="mistralai/Mistral-7B-Instruct-v0.2"
-        )
+    from huggingface_hub import InferenceClient
+
+class Generator:
+    def __init__(self, model_name="mistralai/Mistral-7B-Instruct-v0.2"):
+        self.client = InferenceClient(model=model_name)
         self.model = model_name
 
     def generate(self, query, chunks):
