@@ -8,29 +8,29 @@ class RAGGenerator:
     def generate(self, query, chunks):
         context = "\n\n".join([c.text for c in chunks])
 
-        prompt = f"""
-You are an expert analyst.
-
-Using ONLY the information in the context:
-1. Compare all relevant parts.
-2. Infer relationships.
-3. Synthesize a single precise answer.
-4. Do NOT copy sentences verbatim.
-5. Cite sources at the end.
-
+        messages = [
+            {
+                "role": "system",
+                "content": "You are an expert analyst. Answer only from the provided context."
+            },
+            {
+                "role": "user",
+                "content": f"""
 Context:
 {context}
 
 Question:
 {query}
 
-Final concise answer:
+Give a concise, accurate answer based only on the context.
 """
+            }
+        ]
 
-        response = self.client.text_generation(
-            prompt,
-            max_new_tokens=512,
+        response = self.client.chat.completions.create(
+            messages=messages,
+            max_tokens=512,
             temperature=0.2
         )
 
-        return response
+        return response.choices[0].message.content
