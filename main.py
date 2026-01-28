@@ -6,15 +6,11 @@ from rag_files.reranker import Reranker
 from rag_files.generator import RAGGenerator
 
 
-from huggingface_hub import login 
+
+from huggingface_hub import login
 
 
-
-hf_token = os.getenv("HF_TOKEN")
-if hf_token:
-    login(token=hf_token)
-else:
-    print("HF_TOKEN not found in environment")
+login(token=os.environ.get("HF_TOKEN"))
 
 def build_index(data_path="data", index_path="vector_store"):
     print("📂 Loading documents...")
